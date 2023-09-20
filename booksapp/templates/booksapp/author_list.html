@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <h3>Show authors</h3>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <th>Author</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {# default is object_list (author) must be views.py #}
+                        {% for author in object_list %}
+                            <tr class="text-center">
+                            <td>{{ author.fullname }}</td>
+                            <td>
+                                <a href="{% url "booksapp:author_detail" pk=author.id %}" class="text-warning">Detail</a>
+                                {% if user.is_authenticated %}
+                                <a href="{% url 'booksapp:author_form_update' pk=author.id %}">Update</a>
+                                <a href="{% url "booksapp:author_delete" pk=author.id %}" class="text-danger">Delete</a>
+                                {% endif %}
+                            </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'booksapp:author_form' %}">Add a new author</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="row">
+        <div class="col-8 mt-2 mx-auto">
+            <h3>Detailed information about author {{ author.fullname }}</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <td>Fullname</td>
+                    <td>{{ author.fullname }}</td>
+                </tr>
+                <tr>
+                    <td>Lastname</td>
+                    <td>{{ author.lastname }}</td>
+                </tr>
+                <tr>
+                    <td>Firstname</td>
+                    <td>{{ author.firstname }}</td>
+                </tr>
+                <tr>
+                    <td>Birth</td>
+                    <td>{{ author.birth|date:"d.m.Y" }}</td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>{{ author.country }}</td>
+                </tr>
+            </table>
+            <p class="text-end">
+                <a href="{% url 'booksapp:author_list' %}">List of authors</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

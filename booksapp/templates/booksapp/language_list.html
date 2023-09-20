@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <h3>Show languages</h3>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <th>Language</th>
+                        {% if user.is_authenticated %}
+                        <th>Action</th>
+                        {% endif %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {# default is object_list (languages) must be views.py #}
+                        {% for language in object_list %}
+                            <tr class="text-center">
+                            <td>{{ language }}</td>
+                                {% if user.is_authenticated %}
+                            <td>
+                                <a href="{% url 'booksapp:language_form_update' pk=language.id %}">Update</a>
+                                <a href="{% url 'booksapp:language_delete' pk=language.id %}" class="text-danger">Delete</a>
+                            </td>
+                            {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'booksapp:language_create' %}">Add a new language</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

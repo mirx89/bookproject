@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <h3>Show countries</h3>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <th>Country</th>
+                        {% if user.is_authenticated %}
+                        <th>Action</th>
+                        {% endif %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {# default is object_list (countries) #}
+                        {% for country in countries %}
+                            <tr class="text-center">
+                            <td>{{ country }}</td>
+                            {% if user.is_authenticated %}
+                            <td>
+                                <a href="{% url 'booksapp:country_update' pk=country.id %}">Update</a>
+                                <a href="{% url 'booksapp:country_delete' pk=country.id %}" class="text-danger">Delete</a>
+                            </td>
+                            {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'booksapp:country_create' %}">Add a new country</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="row">
+    <div class="col-8 mx-auto">
+        <h2>403 Forbidden!</h2>
+        <p class="text-danger">You do not have access to this activity.</p>
+        <a href="{{ request.META.HTTP_REFERER }}">Back to last page.</a>
+    </div>
+    </div>
+{% endblock %}

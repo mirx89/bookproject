@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="row">
+        <div class="col-8 mt-2 mx-auto">
+            <h3>Detailed information about book - {{ book.book_info }}</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <td>Book</td>
+                    <td>{{ book.title }}</td>
+                </tr>
+                <tr>
+                    <td>Author</td>
+                    <td>{{ book.author }}</td>
+                </tr>
+                <tr>
+                    <td>Language</td>
+                    <td>{{ book.book_language }}</td>
+                </tr>
+                <tr>
+                    <td>Pages</td>
+                    <td>{{ book.numbers_of_page }}</td>
+                </tr>
+                <tr>
+                    <td>Published year</td>
+                    <td>{{ book.book_published_year }}</td>
+                </tr>
+                <tr>
+                    <td>ISBN</td>
+                    <td>{{ book.isbn }}</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>{{ book.description }}</td>
+                </tr>
+            </table>
+            <p class="text-end">
+                <a href="{% url 'booksapp:book_list' %}">List of books</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
